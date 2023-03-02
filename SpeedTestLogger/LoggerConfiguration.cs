@@ -9,6 +9,8 @@ public class LoggerConfiguration
     public readonly int LoggerId;
     public readonly RegionInfo LoggerLocation;
 
+    public readonly Uri ApiUrl;
+
     public LoggerConfiguration()
     {
         var builder = new ConfigurationBuilder()
@@ -19,6 +21,7 @@ public class LoggerConfiguration
 
         UserId = configuration["userId"]!;
         LoggerId = int.Parse(configuration["loggerId"]!);
+        ApiUrl = new Uri(configuration["speedTestApiUrl"]!);
 
         var countryCode = configuration["loggerLocationCountryCode"];
         LoggerLocation = new RegionInfo(countryCode!);
